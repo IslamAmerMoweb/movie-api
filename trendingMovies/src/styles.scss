@@ -1,0 +1,165 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap");
+
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+::-webkit-scrollbar-track {
+  width: 2px;
+  background-color: #24baef;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #032541;
+  width: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  background-color: #000;
+}
+
+:root {
+  --bg-main: #131722;
+  --color-main: #fff;
+  --light-bg: #24baef;
+  --border-color: #949cb0;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--color-main);
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.bg-lights {
+  background-color: var(--light-bg);
+}
+.brdr {
+  background-color: var(--border-color);
+  height: 1px;
+}
+
+a,
+a:hover {
+  color: var(--color-main);
+  text-decoration: none;
+}
+
+.inputs {
+  background-color: transparent;
+  color: var(--color-main);
+  border: solid 1px var(--border-color);
+}
+
+nav,
+footer {
+  background-color: var(--bg-main);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.clk {
+  cursor: pointer;
+}
+
+.list {
+  width: 120px;
+  height: 150px;
+  border-radius: 5px;
+  z-index: 99;
+  top: 70%;
+  right: 0;
+  background-color: #eee;
+  padding-top: 10px;
+  color: #000;
+  font-size: 14px;
+  text-align: left;
+}
+
+.list ul li {
+  padding-block: 5px;
+  border-bottom: 1px solid #bab9b9;
+}
+
+.list ul li button {
+  border: unset;
+  background-color: unset;
+  width: 95%;
+}
+
+.list ul li i {
+  width: 18px;
+  text-align: left;
+}
+
+.list ul li:nth-child(2) button {
+  width: 85%;
+}
+
+.list ul li button:nth-child(3) i {
+  padding-left: 2px;
+}
+
+.list ul li:last-child {
+  border-bottom: unset;
+}
+
+.list ul li:hover {
+  background-color: #032541;
+}
+
+.list ul li:hover:first-child .add-list {
+  color: #fff;
+}
+
+.list ul li:hover:not(:first-child) button {
+  color: #eee;
+}
+
+.list ul li:hover i {
+  color: #000;
+}
+
+.filt {
+  filter: blur(5px);
+  transition: 1s ease;
+}
+
+.menu {
+  background-color: #eeeeee5a;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: unset;
+}
+
+.alert {
+  background-color: #eee;
+}
+
+.login {
+  border: unset;
+  background-color: unset;
+}
+
+.custom-toast {
+  position: fixed;
+  z-index: 9599595;
+  top: 5%;
+  right: 5%;
+}

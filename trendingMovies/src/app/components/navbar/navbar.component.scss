@@ -1,0 +1,47 @@
+.container {
+  height: 50px;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+nav {
+  height: 60px;
+  z-index: 99;
+}
+
+.clk {
+  cursor: pointer;
+}
+
+.tv-show-list,
+.movies {
+  background-color: #239494;
+  border-radius: 5px;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s ease;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.movies-list:hover .movies {
+  opacity: 1;
+  height: auto;
+}
+
+.dropdown-item:hover {
+  background-color: #237474;
+  border-radius: 5px;
+}
+
+.tv-show:hover .tv-show-list {
+  opacity: 1;
+  height: auto;
+}
+
+.user {
+  width: 25px;
+}

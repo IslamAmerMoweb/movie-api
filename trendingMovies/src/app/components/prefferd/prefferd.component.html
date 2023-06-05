@@ -1,0 +1,65 @@
+<div appClickedOutside (ClickedOutside)="closeMenu(index)" class="dot position-absolute end-0 me-4 mt-3">
+    <button (click)="id = index; menu(index); _Api.detect.next(index)" class="menu z-0"><i
+            class=" fa-solid fa-ellipsis"></i></button>
+    <div *ngIf="index == id && isOpen != (first && firest)" class="list position-absolute z-2">
+        <ul class=" navbar-nav">
+            <li>
+                <button class="add-list" (click)="addList(index)"><i class="fa-solid fa-list-ul"></i>
+                    Add to
+                    list</button>
+                <div [ngClass]="left" *ngIf="popover" class="popover">
+                    <button (click)="createList(form)" class="fw-bold fs-5 text-white"><strong
+                            class="fs-3">+</strong>Create
+                        New List</button>
+                    <form #form class="d-none" [formGroup]="formList" (submit)="createNewList(index,form)">
+                        <input formControlName="listName" class="form-control" type="text" placeholder="Name of list">
+                        <textarea formControlName="descList" class="form-control" type="text"
+                            placeholder="description of list"></textarea>
+                        <button [disabled]="formList.invalid"
+                            class="btn btn-outline-info"><strong>+</strong>Create</button>
+                    </form>
+                    <div class="group-list m-auto position-relative">
+                        <button (click)="visible(readyList)" class="select w-100 d-block text-white rounded-1 p-2">
+                            Add to one of your lists...
+                            <i class="fa-solid fa-caret-down ms-3"></i>
+                        </button>
+                        <div #readyList class="list-menu position-absolute rounded-1">
+                            <div (click)="listName(readyList,index,list._id)" class="exist-list"
+                                *ngFor="let list of lists">
+                                <span class="d-block fs-6 p-1 ps-3 rounded-1">{{list.listName}}
+                                    item ({{list.count}})</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li><button (click)="addFavorite(index)"><i class="fa-solid fa-heart"></i> Favorite</button></li>
+            <li>
+                <button (click)="watchList(index)"><i class="fa-solid fa-bookmark"></i> Watch list</button>
+            </li>
+            <li>
+                <button (click)="rate(check)"><i class="fa-sharp fa-solid fa-star"></i> Your rating</button>
+                <div class="position-relative">
+                    <div #check class="rate-star z-1 d-none d-flex align-items-center position-absolute">
+                        <div class="rating">
+                            <input (click)="ratediput(10,index)" type="radio" name="html">
+                            <input (click)="ratediput(9,index)" type="radio" name="html">
+                            <input (click)="ratediput(8,index)" type="radio" name="html">
+                            <input (click)="ratediput(7,index)" type="radio" name="html">
+                            <input (click)="ratediput(6,index)" type="radio" name="html">
+                            <input (click)="ratediput(5,index)" type="radio" name="html">
+                            <input (click)="ratediput(4,index)" type="radio" name="html">
+                            <input (click)="ratediput(3,index)" type="radio" name="html">
+                            <input (click)="ratediput(2,index)" type="radio" name="html">
+                            <input (click)="ratediput(1,index)" type="radio" name="html">
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div *ngIf="!_Api.userData.getValue()"
+            class="alert position-absolute text-white top-0 rounded-1 d-flex align-items-center h-100 w-100">
+            <a routerLink="/login" class="text-dark fs-4"><i class="fa fa-circle-exclamation"></i> login</a>
+        </div>
+    </div>
+</div>

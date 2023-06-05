@@ -1,0 +1,53 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container pt-1">
+            <a class="navbar-brand text-white fs-3" routerLink="/home">Noxe -</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li *ngIf="_Api.userData.getValue()" class="nav-item movies-list">
+                        <a class="nav-link clk">Movies</a>
+                        <ul class="movies list-unstyled position-absolute">
+                            <li><a class="dropdown-item p-2 px-4" routerLink="/movies/now_playing">Now
+                                    Playing</a></li>
+                            <li><a class="dropdown-item p-2 px-4" routerLink="/movies/popular">Popular</a></li>
+                            <li><a class="dropdown-item p-2 px-4" routerLink="/movies/top_rated">Top Rated</a></li>
+                            <li><a class="dropdown-item p-2 px-4" routerLink="/movies/upcoming">Upcoming</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="_Api.userData.getValue()" class="nav-item tv-show clk">
+                        <a class="nav-link">TvShow</a>
+                        <ul class="tv-show-list list-unstyled position-absolute">
+                            <li><a class="dropdown-item p-2 px-4" routerLink="/TvShows/airing_today">Airing Today</a>
+                            </li>
+                            <li><a class="dropdown-item p-2 px-4" routerLink="/TvShows/on_the_air">On Tv</a></li>
+                            <li><a class="dropdown-item p-2 px-4" routerLink="/TvShows/popular">Popular</a></li>
+                            <li><a class="dropdown-item p-2 px-4" routerLink="/TvShows/top_rated">Top Rated</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="_Api.userData.getValue()" class="nav-item">
+                        <a class="nav-link" routerLink="/actors">Actors</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li *ngIf="!_Api.userData.getValue()" class="nav-item">
+                        <a class="nav-link" aria-current="page" routerLink="/register">Register</a>
+                    </li>
+                    <li *ngIf="!_Api.userData.getValue()" class="nav-item">
+                        <a class="nav-link" routerLink="/login">Login</a>
+                    </li>
+                    <li *ngIf="_Api.userData.getValue()" (click)="_Api.lgout()" class="nav-item clk">
+                        <a class="nav-link">Logout</a>
+                    </li>
+                    <li routerLink="/user" *ngIf="_Api.userData.getValue()" class="nav-item clk">
+                        <a class="nav-link"><img class="user" src="../../../assets/images/userin.png" alt="user"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

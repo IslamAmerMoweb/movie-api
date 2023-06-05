@@ -1,0 +1,35 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="user-name d-flex align-items-center">
+                    <div class="name d-flex align-items-center justify-content-center">
+                        {{userName.substring(0,1)}}
+                    </div>
+                    <div class="user-details">
+                        <div class="user d-flex">
+                            <h2 class="ms-4">{{userName}}</h2>
+                            <p class="mt-2 ms-3">memper since may</p>
+                        </div>
+                        <button (click)="delAllList()" class="btn btn-outline-danger ms-4">Delete Lists</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="pb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <ul class="list-unstyled my-4 d-flex justify-content-around">
+                    <li><a routerLink="favorite">Favorite</a></li>
+                    <li><a routerLink="watch">Watch List</a></li>
+                    <li><a routerLink="lists">Lists</a></li>
+                    <li><a routerLink="rating">Rating</a></li>
+                </ul>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</section>

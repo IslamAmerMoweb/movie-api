@@ -1,0 +1,9 @@
+<div class="col-md-6" *ngFor="let disscuss of discussions | slice:0:3">
+    <div class="discuss d-flex align-items-center">
+        <div class="user-img my-3 bg-danger  mx-3">
+            <img class="w-100" [src]="'https://secure.gravatar.com/avatar/'+disscuss.author_details.avatar_path"
+                alt="avatar_path">
+        </div>
+        <p class="mt-3 w-75">{{disscuss.content |splitRes:8}}...</p>
+    </div>
+</div>

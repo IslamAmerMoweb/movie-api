@@ -1,0 +1,74 @@
+.playing {
+  min-height: 80vh;
+}
+
+.layer {
+  width: 100%;
+  height: 85%;
+  position: absolute;
+  background-color: #00000060;
+  z-index: 50;
+}
+
+.poster img {
+  object-fit: cover;
+}
+
+.movies-in {
+  height: 500px;
+  img {
+    object-fit: cover;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  --bs-pagination-bg: #131722;
+  --bs-pagination-border-color: #131722;
+  --bs-pagination-padding-x: 1.8rem;
+}
+
+.page-link {
+  transition: 0.5s ease;
+  border-radius: 10px;
+}
+
+.page-link:hover {
+  border: none;
+  background-color: #000;
+  outline: unset;
+}
+
+.card {
+  background-color: unset;
+}
+
+.movie-img {
+  overflow: hidden;
+}
+
+.movie-img img {
+  transition: 0.5s ease-in-out;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.zoomIn {
+  animation-name: zoomImg;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes zoomImg {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}

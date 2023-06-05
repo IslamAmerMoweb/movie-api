@@ -1,0 +1,46 @@
+<section>
+    <div class="container">
+        <div class="row my-5 resize align-items-center">
+            <div class="col-md-12 text-center tvData">
+                <h2 class="display-3">{{tvData}}</h2>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 d-flex">
+                <div class="tv-shows position-relative">
+                    <form (mouseleave)="leaveInput(value.value, leave)" (mouseenter)="hover(leave)"
+                        class="position-absolute">
+                        <div class="position-relative input-search">
+                            <div class="search-icon" #leave>
+                                <button (click)="tvSearch(value.value, page)" class="search text-white">
+                                    <i class="fa fa-magnifying-glass fa-xl"></i>
+                                </button>
+                            </div>
+                            <input #value type="search">
+                        </div>
+                    </form>
+                    <div class="trend-tv fs-4 fw-bold position-absolute">
+                        <p class="pt-2 text-center">T<br>r<br>e<br>n<br> d
+                            <br>T<br>V
+                        </p>
+                    </div>
+                </div>
+                <span *ngIf="check"
+                    class="align-self-start ms-4 mt-2 text-warning fs-4 animate__animated animate__flash">Not
+                    Found</span>
+            </div>
+            <div class="col-md-3" *ngFor="let tv of tvTrend;index as index;first as first">
+                <div class="card h-100 clk">
+                    <app-prefferd [index]="index" [first]="first" [trend]="tvTrend"></app-prefferd>
+                    <div class="go-to-details" [routerLink]="'/tvDetails/'+tv.id">
+                        <img [src]="poster+tv.poster_path" class="card-img-top" alt="...">
+                        <div class="card-body bg-danger position-absolute d-none top-50 w-100 h-100">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,76 @@
+<section class="container">
+    <div class="row justify-content-center position-relative">
+        <h1 class="text-center ps-1">Trending Movies</h1>
+        <div class="style"></div>
+    </div>
+    <div class="row mt-0 flex-nowrap">
+        <div class="col test animate__backInLeft" *ngFor="let imag of trend; index as index">
+            <div class="image">
+                <img class="w-100" [src]="'https://image.tmdb.org/t/p/w500'+imag.poster_path" alt="...">
+            </div>
+        </div>
+    </div>
+    <div *ngIf="_Api.userData.getValue()" class="row my-5">
+        <div class="col">
+            <nav aria-label="Page navigation example bg-danger">
+                <ul class="pagination">
+                    <li (click)="pages(num-1)" class="page-item">
+                        <a class="page-link clk" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li (click)="pages(2)" class="page-item clk"><a class="page-link">1</a></li>
+                    <li (click)="num >=4? pages(num-1):pages(3)" class="page-item clk"><a
+                            class="page-link">{{num >= 5? num-1:2}}</a>
+                    </li>
+                    <li (click)="num >=4? pages(num):pages(4)" class="page-item clk"><a
+                            class="page-link">{{num >= 5? num:3}}</a></li>
+                    <li (click)="pages(num+1)" class="page-item clk">
+                        <a class="page-link clk" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div ngClass="mt-5" class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-6">
+        <div class="col col-lg-2" *ngFor="let movie of trend; index as index; first as first">
+            <div class="card">
+                <app-prefferd [first]="first" [trend]="trend" [index]="index"></app-prefferd>
+                <div class="movies clk" [routerLink]="'/trendDetails/'+movie.id">
+                    <img [ngClass]="id == index?filt:''" [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{movie.title}}</h5>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="_Api.userData.getValue()" class="row my-5">
+        <div class="col">
+            <nav aria-label="Page navigation example bg-danger">
+                <ul class="pagination">
+                    <li (click)="pages(num-1)" class="page-item">
+                        <a class="page-link clk" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li (click)="pages(2)" class="page-item clk"><a class="page-link">1</a></li>
+                    <li (click)="num >=4? pages(num-1):pages(3)" class="page-item clk"><a
+                            class="page-link">{{num >= 5? num-1:2}}</a>
+                    </li>
+                    <li (click)="num >=4? pages(num):pages(4)" class="page-item clk"><a
+                            class="page-link">{{num >= 5? num:3}}</a></li>
+                    <li (click)="pages(num+1)" class="page-item clk">
+                        <a class="page-link clk" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>

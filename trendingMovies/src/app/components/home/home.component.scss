@@ -1,0 +1,42 @@
+.row .col .card {
+  border: none;
+  background-color: unset;
+  color: #eee;
+}
+
+.clk {
+  cursor: pointer;
+}
+
+h1 {
+  width: fit-content;
+  background-color: #131722;
+  position: relative;
+  z-index: 60;
+}
+
+.style {
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  border: 1px solid #eee;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  --bs-pagination-bg: #131722;
+  --bs-pagination-border-color: #131722;
+  --bs-pagination-padding-x: 1.8rem;
+}
+
+.page-link {
+  transition: 0.5s ease;
+  border-radius: 10px;
+}
+
+.page-link:hover {
+  border: none;
+  background-color: #000;
+  outline: unset;
+}

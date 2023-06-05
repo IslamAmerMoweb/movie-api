@@ -1,0 +1,21 @@
+<div class="d-flex gap-4 user-poster">
+    <div class="col-md-1">
+        <div class="user_Image ms-2">
+            <img class="w-100 h-100" [src]="author_details?.avatar_path?.substring(1)" alt="...">
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div *ngIf="result ; else data" class="content_poster h-100">
+            <div class="text_rev">
+                <p><strong class="h4">A review by </strong> {{author_details?.username}}</p>
+                <p>Written by {{author_details?.username}} on {{reviews.updated_at!.split(':').shift()}}</p>
+            </div>
+            <p>{{reviews.content!.slice(0,500)}}</p>
+        </div>
+        <ng-template #data>
+            <div class="content_poster h-100 d-flex align-items-center">
+                <h3>no reviews yet</h3>
+            </div>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<section>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col">
+                <nav aria-label="Page navigation example bg-danger">
+                    <ul class="pagination">
+                        <li (click)="pages(page-1)" class="page-item">
+                            <a class="page-link clk" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li (click)="pages(2)" class="page-item clk"><a class="page-link">1</a>
+                        </li>
+                        <li (click)="page >=4? pages(page-1):pages(3)" class="page-item clk"><a
+                                class="page-link">{{page >= 5? page-1:2}}</a>
+                        </li>
+                        <li (click)="page >=4? pages(page):pages(4)" class="page-item clk"><a
+                                class="page-link">{{page >= 5? page:3}}</a></li>
+                        <li (click)="pages(page+1)" class="page-item clk">
+                            <a class="page-link clk" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-12 my-5">
+                <h2 class="display-5 text-center">Popular Actors</h2>
+            </div>
+            <div class="col-md-12 d-flex align-items-center gap-4">
+                <div class="search-box">
+                    <button (click)="peopleSearch(value.value,page)" class="btn-search"><i
+                            class="fas fa-search"></i></button>
+                    <input #value type="text" class="input-search" placeholder="Type to Search...">
+                </div>
+                <span *ngIf="notFound" class="text-danger animate__animated animate__rubberBand fs-4">Not found</span>
+            </div>
+            <div class="col-md-3" *ngFor="let actor of actors">
+                <div class="card overflow-hidden clk" [routerLink]="'/people/'+actor.id">
+                    <img [src]="poster+actor.profile_path" class="card-img-top" alt="...">
+                    <div class="card-body position-absolute w-100 h-100">
+                        <h5 class="card-title">{{actor.name}}</h5>
+                        <p class="card-text">{{actor.known_for_department}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col">
+                <nav aria-label="Page navigation example bg-danger">
+                    <ul class="pagination">
+                        <li (click)="pages(page-1)" class="page-item">
+                            <a class="page-link clk" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li (click)="pages(2)" class="page-item clk"><a class="page-link">1</a></li>
+                        <li (click)="page >=4? pages(page-1):pages(3)" class="page-item clk"><a
+                                class="page-link">{{page >= 5? page-1:2}}</a>
+                        </li>
+                        <li (click)="page >=4? pages(page):pages(4)" class="page-item clk"><a
+                                class="page-link">{{page >= 5? page:3}}</a></li>
+                        <li (click)="pages(page+1)" class="page-item clk">
+                            <a class="page-link clk" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>

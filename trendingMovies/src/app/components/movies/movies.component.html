@@ -1,0 +1,74 @@
+<section>
+    <div class="container">
+        <div class="row playing align-items-center justify-content-center">
+            <div class="layer"></div>
+            <div class="col-md-12 overflow-hidden p-0 playing-movie animate__animated position-absolute">
+                <div class="poster">
+                    <img #src class="w-100 animate__animated rounded-1" [src]="show" alt="...">
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col my-4">
+                <nav aria-label="Page navigation example bg-danger">
+                    <ul class="pagination">
+                        <li (click)="pages(num-1)" class="page-item">
+                            <a class="page-link clk" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li (click)="pages(2)" class="page-item clk"><a class="page-link">1</a></li>
+                        <li (click)="num >=4? pages(num):pages(3)" class="page-item clk"><a
+                                class="page-link">{{num >= 5? num-1:2}}</a>
+                        </li>
+                        <li (click)="num >=4? pages(num):pages(4)" class="page-item clk"><a
+                                class="page-link">{{num >= 5? num:3}}</a></li>
+                        <li (click)="pages(num+1)" class="page-item clk">
+                            <a class="page-link clk" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="text-center my-3 display-5">{{header}}</h2>
+            <div class="col-md-4 gy-4 clk" *ngFor="let posters of nowPlaying">
+                <div class="card w-100" [routerLink]="'/trendDetails/'+posters.id">
+                    <div class="movie-img">
+                        <img [src]="path+posters.backdrop_path" class="w-100 rounded-2 card-img-top" alt="...">
+                    </div>
+                    <div class="card-body text-white">
+                        <h5 class="card-title">{{posters.title}}</h5>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col">
+                <nav aria-label="Page navigation example bg-danger">
+                    <ul class="pagination">
+                        <li (click)="pages(num-1)" class="page-item">
+                            <a class="page-link clk" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li (click)="pages(2)" class="page-item clk"><a class="page-link">1</a></li>
+                        <li (click)="num >=4? pages(num):pages(3)" class="page-item clk"><a
+                                class="page-link">{{num >= 5? num-1:2}}</a>
+                        </li>
+                        <li (click)="num >=4? pages(num):pages(4)" class="page-item clk"><a
+                                class="page-link">{{num >= 5? num:3}}</a></li>
+                        <li (click)="pages(num+1)" class="page-item clk">
+                            <a class="page-link clk" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>

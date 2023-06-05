@@ -1,0 +1,38 @@
+<section>
+    <div class="image"></div>
+    <div class="row z-3 position-relative h-100 justify-content-center">
+        <h2 class="display-6 fw-bolder text-center">Sign In to your Account</h2>
+        <form class="w-50" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form__group field">
+                <input type="email" formControlName="email" class="form__field" placeholder="email" id='email' />
+                <label [class]="errors('email', 'email')?'text-danger':''" for="email" class="form__label">Email</label>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('email', 'pattern')&& loginForm.get('email')?.touched">
+                    Email is <strong>Invalid</strong>
+                </p>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('email', 'required')&& loginForm.get('email')?.touched">
+                    Email is <strong>required</strong>
+                </p>
+            </div>
+            <div class="form__group field">
+                <input pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" formControlName="password" type="password"
+                    class="form__field" placeholder="Password" id='password' />
+                <label [class]="errors('password', 'pattern')?'text-danger':''" for="password"
+                    class="form__label">Password</label>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('password', 'pattern')&& loginForm.get('password')?.touched">
+                    eight characters, <strong>one letter and one number:</strong>
+                </p>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('password', 'required')&& loginForm.get('password')?.touched">
+                    Password is <strong>required</strong>
+                </p>
+            </div>
+            <div *ngIf="msgError" class="alert alert-danger fs-6 text-center mt-5">{{msgError}}</div>
+            <button [disabled]="loginForm.invalid" class="btn btn-outline">Login</button>
+        </form>
+        <h6 class="text-center">Don’t have an account? <a routerLink="/register" class="orang">sign up</a>
+        </h6>
+    </div>
+</section>

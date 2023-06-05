@@ -1,0 +1,14 @@
+<div class="row g-4">
+    <h3 class="fw-bold">My List</h3>
+    <div class="col-md-4 clk" *ngFor="let list of watchList" [routerLink]="'/content/'+list._id">
+        <div [ngStyle]="{'background':'url('+list.imageList+')'}"
+            class="list-name bg-dark text-white d-flex flex-column align-items-center justify-content-center">
+            <h2>{{list.listName }}</h2>
+            <h4>item ({{list.count}})</h4>
+            <h3></h3>
+        </div>
+    </div>
+    <div class="col-12 mb-5">
+        <router-outlet></router-outlet>
+    </div>
+</div>

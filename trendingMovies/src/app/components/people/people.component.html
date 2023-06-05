@@ -1,0 +1,37 @@
+<section>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-3">
+                <div class="people">
+                    <img class="w-100 rounded-3" [src]="poster+people.profile_path" alt="profile path">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="content">
+                    <h2 class="display-5">{{people.name}}</h2>
+                    <h4>biography</h4>
+                    <p>{{people.biography}}</p>
+                    <h4>Place of birth</h4>
+                    <p>{{people.place_of_birth}}</p>
+                    <h4>Known for department</h4>
+                    <p>{{people.known_for_department}}</p>
+                </div>
+            </div>
+            <div class="row gy-4">
+                <div class="col-md-12">
+                    <h2 class="display-5">Acting</h2>
+                </div>
+                <div class="col-md-3" *ngFor="let credit of credit">
+                    <div class="card overflow-hidden w-100 clk" [routerLink]="'/trendDetails/'+credit.id">
+                        <img [src]="poster+credit.poster_path" class="card-img-top" alt="...">
+                        <div class="card-body text-white position-absolute h-100 w-100">
+                            <h5 class="card-title">{{credit.title}}</h5>
+                            <h5>Vote average : {{credit.vote_average.toFixed()}}</h5>
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

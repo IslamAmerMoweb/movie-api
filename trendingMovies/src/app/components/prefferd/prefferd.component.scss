@@ -1,0 +1,144 @@
+.filt {
+  filter: blur(5px);
+  transition: 1s ease;
+}
+
+.popover {
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  left: 110%;
+  z-index: 994584;
+  top: 0;
+  transform: translateY(-40%);
+  background-color: #2d395a;
+}
+
+.left {
+  left: 0;
+  transform: translateX(-104%);
+}
+
+.left::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 107%;
+  transform: translate(-100%, -50%);
+  top: 40%;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent #2d395a;
+}
+
+.popover::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  transform: translate(-100%, -50%);
+  top: 50%;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent #2d395a transparent transparent;
+}
+
+.popover:hover {
+  i {
+    color: #eee;
+  }
+}
+
+.select {
+  background-color: #032541;
+}
+
+.list-menu {
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #eee;
+  width: 100%;
+  padding: 10px;
+}
+
+.group-list {
+  width: 85%;
+}
+
+form {
+  width: 95%;
+  height: 200px;
+  background-color: #160f2c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.exist-list span:hover {
+  background-color: #dad9d9;
+}
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+.rating {
+  position: relative;
+  display: flex;
+  margin: 0 0;
+  flex-direction: row-reverse;
+}
+.rating input {
+  position: relative;
+  width: 18px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-appearance: none;
+  appearance: none;
+  overflow: hidden;
+}
+.rating input::before {
+  content: "\f005";
+  position: absolute;
+  font-family: fontAwesome;
+  font-size: 18px;
+  position: absolute;
+  left: 7px;
+  color: #030b0f;
+  transition: 0.5s;
+}
+.rating input:nth-child(2n + 1)::before {
+  right: 7px;
+  left: initial;
+}
+.rating input:hover ~ input::before,
+.rating input:hover::before,
+.rating input:checked ~ input::before,
+.rating input:checked::before {
+  color: #1f9cff;
+  cursor: pointer;
+}
+
+.rate-star {
+  width: fit-content;
+  height: 50px;
+  top: 40%;
+  border-radius: 5px;
+  font-size: 18px;
+  transform: translate(-50%, 30%);
+  left: 80%;
+  padding: 5px;
+  background-color: #1a2853;
+  color: #eee;
+}

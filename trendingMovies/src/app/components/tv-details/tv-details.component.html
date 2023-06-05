@@ -1,0 +1,77 @@
+<header class="position-relative">
+    <h2>Overview</h2>
+    <div class="row align-items-center justify-content-center position-relative head gap-5">
+        <div class="col-md-2 head_col mb-5">
+            <div class="layout"></div>
+            <div class="lay position-absolute end-0">
+                <img [src]="imagePoster" alt="...">
+            </div>
+            <div class="image position-relative pt-4">
+                <img [src]="posterImage" class="w-100" alt="...">
+            </div>
+        </div>
+        <div class="col-md-8 d-flex align-items-center">
+            <div class="card card-1 w-100">
+                <div class="movies">
+                    <div class="card-body position-relative z-3">
+                        <h2 class="text-white display-6">{{tvDetails.name}}</h2>
+                        <div class="d-flex">
+                            <p>{{tvDetails.last_air_date}} ({{tvDetails.production_countries.name}})</p>
+                            <div class="genere" *ngFor="let detail of geners">
+                                <h5>, &#160;{{detail.name}}&#160;</h5>
+                            </div>
+                        </div>
+                        <h3>Overview :</h3>
+                        <p class="card-text">{{tvDetails.overview}}</p>
+                        <div class="credit d-flex justify-content-around mt-5">
+                            <div *ngFor="let credit of credit">
+                                <h6 class="card-title mb-1 text-white">{{credit.character}}</h6>
+                                <p>{{credit.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="review">
+    <div class="container">
+        <div class="row" *ngIf="crew.length != 0">
+            <div class="col-md-10">
+                <h3 class="mb-3">Top Billed Cast</h3>
+                <owl-carousel-o [options]="customOptions">
+                    <ng-container *ngFor="let slide of crew">
+                        <ng-template [width]="120" carouselSlide [id]="slide.id">
+                            <figure class="actors_cast border">
+                                <img class="w-100" [src]="'https://image.tmdb.org/t/p/w500'+slide.profile_path"
+                                    alt="...">
+                                <figcaption class="text-center">{{slide.name.slice(0,15)}}</figcaption>
+                            </figure>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+            </div>
+            <div class="col-md-2 mt-5 d-flex justify-content-center">
+                <div class="details">
+                    <p class="fs-6"><strong>Status :</strong> {{tvDetails.status}}</p>
+                    <p class="fs-6"><strong>Original language :</strong> {{tvDetails.original_language}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 my-5" *ngIf="similar.length !=0">
+                <h2 class="text-center display-4">Similar TV</h2>
+            </div>
+            <div class="col-md-3" *ngFor="let similar of similar">
+                <div class="card w-100 h-100 clk" (click)="playSimilar(similar.id)">
+                    <img [src]="path+similar.poster_path" class="w-100 card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

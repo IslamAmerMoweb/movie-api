@@ -1,0 +1,82 @@
+<h2 class="mb-5">My Rating</h2>
+<div *ngIf="favorites.length == 0" class="row align-items-center">
+    <div class="col-md-12 text-center">
+        <h2>No more rating added yet</h2>
+    </div>
+</div>
+<div class="row g-0 shadow mb-4 rounded-4 align-items-center" *ngFor="let favorite of favorites; index as i">
+    <div class="lock-img clk" [routerLink]="'/trendDetails/'+favorite.id">
+        <img class="w-100" [src]="post+favorite.poster_path" alt="....">
+    </div>
+    <div class="col-md-8 ms-4">
+        <div class="text-favorite">
+            <h4 class="clk" [routerLink]="'/trendDetails/'+favorite.id">{{favorite.title }}</h4>
+            <div class="text-post d-flex align-items-center">
+                <p>{{favorite.overview}}</p>
+            </div>
+            <ul appClickOut (Clicked)="clickOut(i)"
+                class="list-unstyled position-relative mb-1 w-50 d-flex justify-content-around">
+                <li class="position-relative">
+                    <span (click)="rate(i); indexEl = i"><i class="fa-regular fa-star"></i></span>
+                    <div *ngIf="indexEl == i && clicked"
+                        class="rate-star z-1 d-flex align-items-center position-absolute">
+                        <div class="rating">
+                            <input (click)="ratediput(10,favorite.id)" type="radio" name="html">
+                            <input (click)="ratediput(9,favorite.id)" type="radio" name="html">
+                            <input (click)="ratediput(8,favorite.id)" type="radio" name="html">
+                            <input (click)="ratediput(7,favorite.id)" type="radio" name="html">
+                            <input (click)="ratediput(6,favorite.id)" type="radio" name="html">
+                            <input (click)="ratediput(5,favorite.id)" type="radio" name="html">
+                            <input (click)="ratediput(4,favorite.id)" type="radio" name="html">
+                            <input (click)="ratediput(3,favorite.id)" type="radio" name="html">
+                            <input (click)="ratediput(2,favorite.id)" type="radio" name="html">
+                            <input (click)="ratediput(1,favorite.id)" type="radio" name="html">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span (click)="heart(favorite.id)" class="favorite-click"><i class="fa-solid fa-heart"></i></span>
+                </li>
+                <li class="position-relative">
+                    <button (click)="showList(i)" class="btn p-0 main-btn"><i class="fa-solid fa-list-ul"></i></button>
+                    <div *ngIf="indexEl==i&&toolTip" class="tipTool z-0 position-absolute p-2 px-3">
+                        <ul class="list-unstyled text-white text-center">
+                            <li>
+                                <button (click)="createMenu()" class="btn fw-bold fs-5"><strong>+</strong>Create new
+                                    List</button>
+                            </li>
+                            <li *ngIf="form" class="crete-list">
+                                <form [formGroup]="formList" (ngSubmit)="addNewList()">
+                                    <input formControlName="listName" class="form-control" type="text"
+                                        placeholder="Name list">
+                                    <textarea formControlName="descList" class="form-control mt-2"
+                                        placeholder="Description"></textarea>
+                                    <button [disabled]="formList.invalid"
+                                        class="btn btn-outline-info mt-2 w-100">+Create</button>
+                                </form>
+                            </li>
+                            <li>
+                                <button *ngIf="btn" (click)="listMenu()" class="text-white w-100 open-menu">Add to one
+                                    of your lists...<i class="fa-solid fa-caret-down ms-3"></i>
+                                </button>
+                            </li>
+                            <li *ngIf="btnList" class="list-favorite text-start text-dark p-2 rounded-1">
+                                <ul class="list-unstyled parent-list">
+                                    <li class="my-1 child-list" *ngFor="let item of listItem; index as index">
+                                        <span (click)="addToList(item._id,i)" class="clk">{{item.listName}}: item
+                                            ({{item.count}})</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-2 align-self-end mb-3">
+        <div class="rated w-25 ms-auto">
+            <span class="fs-5"><strong>{{favorite.rate}} </strong> <i class="fa-solid fa-star"></i></span>
+        </div>
+    </div>
+</div>

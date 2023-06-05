@@ -1,0 +1,83 @@
+.tv-shows {
+  width: 100px;
+  border: 10px solid #a1841a;
+  height: 450px;
+  border-radius: 20px;
+}
+
+.trend-tv {
+  right: -100%;
+  top: 60%;
+  width: 75px;
+  transform: translate(-50%, -50%);
+  background-color: #131722;
+  border: 5px solid #f3eb07;
+  border-radius: 25px;
+}
+
+.search {
+  background-color: orange;
+  width: 45px;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+form {
+  top: 10%;
+  left: 50%;
+}
+
+form:hover input {
+  background-color: #342f1a;
+}
+
+button {
+  border: unset;
+}
+
+.input-search {
+  outline: 5px solid #f3eb07;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.search-icon {
+  background-color: #000;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  left: 0;
+  transition: 0.5s ease;
+  border-radius: 15px;
+}
+
+form input {
+  width: 250px;
+  background-color: #000;
+  border: unset;
+  padding: 10px;
+}
+
+form input:focus {
+  outline: 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
+.card {
+  border: none;
+  background-color: unset;
+}
+
+.resize {
+  height: 15vh;
+}

@@ -1,0 +1,76 @@
+<section>
+    <div class="image"></div>
+    <div class="row w-100 h-100 justify-content-center">
+        <h2 class="z-3 text-center fw-bolder display-5 align-self-end">Create your Account</h2>
+        <form autocomplete="off" class="w-50" [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="form__group field">
+                <input pattern="^[A-Z][a-z]{2,15}$" formControlName="name" type="text" class="form__field"
+                    placeholder="Name" name="name" id='name' />
+                <label [class]="errors('name', 'pattern')?'text-danger':''" for="name" class="form__label">Name</label>
+                <p class="error animate__fadeInDown animate__animated shadow"
+                    *ngIf="errors('name', 'pattern')&& registerForm.get('name')?.touched">
+                    name should start with <strong>Capital</strong>
+                </p>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('name', 'required')&& registerForm.get('name')?.touched">
+                    name is <strong>required</strong>
+                </p>
+            </div>
+            <div class="form__group field">
+                <input type="email" formControlName="email" class="form__field" placeholder="email" id='email' />
+                <label [class]="errors('email', 'email')?'text-danger':''" for="email" class="form__label">Email</label>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('email', 'pattern')&& registerForm.get('email')?.touched">
+                    Email is <strong>Invalid</strong>
+                </p>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('email', 'required')&& registerForm.get('email')?.touched">
+                    Email is <strong>required</strong>
+                </p>
+            </div>
+            <div class="form__group field">
+                <input [(ngModel)]="value" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" formControlName="password"
+                    type="password" class="form__field" placeholder="Password" id='password' />
+                <label [class]="errors('password', 'pattern')?'text-danger':''" for="password"
+                    class="form__label">Password</label>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('password', 'pattern')&& registerForm.get('password')?.touched">
+                    eight characters, <strong>one letter and one number:</strong>
+                </p>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('password', 'required')&& registerForm.get('password')?.touched">
+                    Password is <strong>required</strong>
+                </p>
+            </div>
+            <div class="form__group field">
+                <input (keyup)="confirmPassword()" [(ngModel)]="val" [pattern]="value" formControlName="rePassword"
+                    type="password" class="form__field" placeholder="rePassword" id='rePassword' />
+                <label [class]="errors('rePassword', 'pattern')?'text-danger':''" for="rePassword"
+                    class="form__label">Repassword</label>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('rePassword', 'pattern') && registerForm.get('rePassword')?.touched">
+                    Repassword doesn't <strong>Match</strong>
+                </p>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('rePassword', 'required')&& registerForm.get('rePassword')?.touched">
+                    Password is <strong>required</strong>
+                </p>
+            </div>
+            <div class="form__group field">
+                <input pattern="^01[0125][0-9]{8}$" formControlName="phone" type="tel" class="form__field"
+                    placeholder="rePassword" id='phone' />
+                <label [class]="errors('phone', 'pattern')?'text-danger':''" for="phone"
+                    class="form__label">Phone</label>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('phone', 'pattern') && registerForm.get('phone')?.touched">
+                    phone doesn't <strong>Match Egyption number</strong>
+                </p>
+                <p class="error animate__fadeInDown animate__animated"
+                    *ngIf="errors('phone', 'required')&& registerForm.get('phone')?.touched">
+                    Phone is <strong>required</strong>
+                </p>
+            </div>
+            <button [disabled]="registerForm.invalid" class="btn btn-outline w-100 text-white">Register</button>
+        </form>
+    </div>
+</section>

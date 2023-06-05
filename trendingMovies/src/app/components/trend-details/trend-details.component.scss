@@ -1,0 +1,131 @@
+header {
+  margin-top: 2rem;
+}
+
+header > h2 {
+  width: 92%;
+  margin-left: auto;
+}
+.head .layout {
+  width: 100% !important;
+  height: 95%;
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  background-image: linear-gradient(
+    to right,
+    rgb(28, 2, 2),
+    rgba(18, 23, 38, 0.5)
+  );
+  z-index: 0;
+}
+
+.lay {
+  width: 80%;
+  height: 95%;
+  z-index: -1;
+  padding-top: 4rem;
+  overflow: hidden;
+}
+
+.lay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.3);
+}
+
+.image {
+  width: 300px;
+}
+
+.image img {
+  border-radius: 10px;
+}
+
+.card {
+  background-color: unset;
+  color: #b3b3b3;
+  margin-left: 4rem;
+}
+
+.slide {
+  right: -120px;
+}
+
+.hide {
+  left: -120px;
+}
+
+.slide,
+.hide {
+  height: 100%;
+  width: 150px;
+  background-color: #131722;
+}
+
+.scroll {
+  position: relative;
+  perspective: 100px;
+  animation: scrol 40s linear infinite forwards;
+}
+
+@keyframes scrol {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(calc(-250px * 5));
+  }
+}
+
+// **********************************************
+
+::-webkit-scrollbar {
+  border-radius: 10px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #4b2c2c;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d2c802;
+  border-radius: 10px;
+  height: 2px;
+}
+
+.actors_cast {
+  border-radius: 10px;
+  height: 210px;
+  overflow: hidden;
+}
+
+figcaption {
+  color: #fff174;
+  margin-top: 10px;
+  background-color: #d04b4b;
+}
+
+.side_nav {
+  width: 350px;
+  box-shadow: 1px 23px 100px 50px #131722;
+  background-color: #131722;
+}
+
+// **************** owel animation ********************
+.reviews {
+  background-color: #1f2536;
+  border-radius: 10px;
+  border-block: 1px solid #eee;
+}
+
+.owl-dots {
+  text-align: center;
+  position: fixed;
+  margin-top: 10px;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}

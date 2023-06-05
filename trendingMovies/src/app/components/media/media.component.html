@@ -1,0 +1,90 @@
+<div class="container position-relative">
+    <div class="row mt-3 position-relative">
+        <h3 class="col-md-8">Media</h3>
+        <div class="col-md-4 mt-1 side-nav position-absolute end-0">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button fs-6 collapsed text-white" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                            aria-controls="flush-collapseOne">
+                            Videos {{media.length}}
+                        </button>
+                    </h3>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <div (click)="nextVideo(video.key)" class="image text-end" *ngFor="let video of media">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <span class="text-white">{{video.name | slice:0:30}}</span>
+                                    <img class="rounded-3 w-25 mt-1"
+                                        [src]="'https://i.ytimg.com/vi/'+video.key+'/hqdefault.jpg'" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3 flex-nowrap " *ngFor="let video of media|slice:0:1; index as index">
+        <div class="col-md-8 mb-4">
+            <div class="wrapper position-relative bg-danger" appClickedOutside (ClickedOutside)="aria(elem)">
+                <div class="image-youtube">
+                    <img class="rounded-3 w-100 h-100 object-fit-cover"
+                        [src]="'https://i.ytimg.com/vi/'+(key != ''?key:video.key)+'/hqdefault.jpg'" alt="">
+                </div>
+                <button type="button" (click)="playVideo(video.key,elem)"
+                    class="btn position-absolute start-50 translate-middle-x top-50" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    <i class="fa-brands fa-youtube text-danger fa-3x bg-white rounded-3"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="image-youtube">
+                <img class="rounded-3 w-100 h-100 object-fit-cover"
+                    [src]="'https://i.ytimg.com/vi/'+video.key+'/hqdefault.jpg'" alt="">
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content bg-dark">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="w-100">
+                            <iframe #elem type="text/html" style="background-color: #000;" width="1140" height="641"
+                                frameborder="0" allowfullscreen="" allowscriptaccess="always"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="galleryes" class="row align-items-center justify-content-center">
+        <h2 class="text-center fw-bold my-5">Similar</h2>
+        <div #gallery class="col-md-10 gallery d-flex align-items-center position-relative">
+            <img class="slider-item" src="" alt="1">
+            <img class="slider-item" src="" alt="2">
+            <img class="slider-item" src="" alt="3">
+            <img class="slider-item" src="" alt="4">
+            <img class="slider-item" src="" alt="5">
+            <img class="slider-item" src="" alt="6">
+            <img class="slider-item" src="" alt="7">
+            <img class="slider-item" src="" alt="8">
+            <img class="slider-item" src="" alt="9">
+        </div>
+        <div class="controls align-self-end d-flex justify-content-center gap-5">
+            <button (click)="previeus()" #prev class="btn text-white prev"><i
+                    class="fa fa-angles-left fa-2x"></i></button>
+            <button (click)="nextItem()" #next class="btn text-white next"><i
+                    class="fa fa-angles-right fa-2x"></i></button>
+        </div>
+    </div>
+</div>

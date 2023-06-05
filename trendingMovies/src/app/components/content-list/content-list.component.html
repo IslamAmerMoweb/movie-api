@@ -1,0 +1,105 @@
+<header [style]="{'background':'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),'+bgImage}">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-md-8">
+                <div class="user-name d-flex align-items-center">
+                    <div class="name d-flex align-items-center justify-content-center">
+                        {{userName.substring(0,1)}}
+                    </div>
+                    <div class="user-details">
+                        <div class="user d-flex">
+                            <h2 class="ms-4">{{userName}}</h2>
+                            <p class="mt-2 ms-3">memper since may</p>
+                        </div>
+                        <button (click)="delMany()" class="btn btn-outline-danger ms-4">Delete Item</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 h-50 align-self-end" *ngFor="let detail of listDetails">
+                <div class="content-list h-100 d-flex flex-column justify-content-end">
+                    <div class="name-list d-flex align-items-baseline">
+                        <h6>List Name</h6>
+                        <p class="ms-3">{{detail.listName}}</p>
+                    </div>
+                    <div class="name-list d-flex align-items-baseline">
+                        <h6>Description</h6>
+                        <p class="ms-3">{{detail.descList }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="container">
+        <div class="row menu-list align-items-center justify-content-center">
+            <div class="col-md-8">
+                <div class="info-list">
+                    <ul class="list-unstyled d-flex justify-content-around align-items-end">
+                        <li>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Set Image
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade mt-5" id="exampleModal">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <button type="button" class="btn-close position-absolute z-1 p-4"
+                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <div class="modal-body">
+                                            <div class="row p-5 g-4">
+                                                <div (click)="changeBg( item.poster_path)" class="col-md-12 clk"
+                                                    *ngFor="let item of listItem">
+                                                    <img class="w-100" [src]="post+item.poster_path" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="text-center">
+                            <h2 class="m-0 display-5">{{listItem.length}}</h2> Total item
+                        </li>
+                        <li>
+                            <form class="d-flex" (ngSubmit)="editList(btn,btn2)" [formGroup]="editFormList">
+                                <div class="align-self-end">
+                                    <button #btn type="button" (click)="dataList(btn,btn2)" class="btn btn-dark">Edit
+                                        List</button>
+                                    <button #btn2 [disabled]="editFormList.invalid"
+                                        class="btn btn-danger align-self-end">Update
+                                        List</button>
+                                </div>
+                                <div class="input">
+                                    <input placeholder="Edit List name" [readonly]="readonly" formControlName="listName"
+                                        class="z-1" type="search">
+                                    <!-- <p>Edit List name</p> -->
+                                </div>
+                                <div class="input">
+                                    <input [readOnly]="readonly" placeholder="Edit Description"
+                                        formControlName="descList" class="z-1" type="search">
+                                    <!-- <p>Edit Description</p> -->
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row g-5 pb-5">
+            <div class="col-2 poster clk" *ngFor="let item of listItem">
+                <div class="poster position-relative">
+                    <div class="position-relative rounded-2 z-1 bg-black" [routerLink]="'/trendDetails/'+item.id">
+                        <img class="w-100 rounded-2" [src]="post+item.poster_path" alt="">
+                    </div>
+                    <button (click)="delOneItem(item.id,item.poster_path)"
+                        class="btn w-100 z-0 delete bg-danger position-absolute"><i
+                            class="fa-sharp fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
